@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivivinhação</title>
+</head>
+<body>
+    <input>
+    <button>Compara os numeros</button>
+    <script>
+
+
+        var input = document.querySelector('input');
+        input.focus()
+        var numerosPensados = []
+        
+        function sorteiaNumeros(n){
+            var numerosAleatorios = []
+            var numeroAleatorio = 0
+            var c = 0;
+            while(c <= n){
+                numeroAleatorio = Math.round(Math.random()*10);
+                if(numeroAleatorio !== numerosAleatorios[c]){
+                    numerosAleatorios.push(numeroAleatorio)
+                }
+            }
+            
+        }
+
+        var numerosPensados = sorteiaNumeros(5);
+
+        function verificar(){
+            for(var i = 0; i < numerosPensados.length; i++){
+                if(numerosPensados[i] == input.value){
+                    alert('Você acetou!!');
+                }else{
+                    alert('Você errou!!');
+                }
+            }
+            input.value = '';
+            input.focus();
+        }
+        console.log(numerosPensados);
+        var button = document.querySelector('button');
+        button.onclick = verificar;
+
+    </script>
+</body>
+</html>

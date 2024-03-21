@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinhação</title>
+</head>
+<body>
+    <input>
+    <button>Compare os segredos</button>
+    <script>
+        function pulaLinha(){
+            document.write('<br>');
+            document.write('<br>');
+        }
+
+        function mostra(frase){
+            document.write(frase);
+            pulaLinha();
+        }
+
+        
+        
+        function sorteiaNumeros(n){
+            var numeroAleatorio = 0
+            var segredos = []
+            var c = 0
+            while(c < n){
+                var achou = false
+                numeroAleatorio = (Math.round(Math.random()*10))
+                if(numeroAleatorio !== 0){
+                    for(var posiçao = 0; posiçao < segredos.length; posiçao++){
+                        if(segredos[posiçao] == numeroAleatorio){
+                            achou = true
+                            break
+                        }
+                    }
+                    if(achou == false){
+                        segredos.push(numeroAleatorio)
+                        c++
+                    }
+                }
+            
+               
+            }
+            return segredos
+            
+        }
+
+        var numerosPensados = sorteiaNumeros(4);
+        console.log(numerosPensados)
+
+        var input = document.querySelector('input');
+        input.focus()
+
+        function verificar(){
+            var resposta = false
+            for(var i = 0; i < numerosPensados.length; i++){
+                if(numerosPensados[i] == input.value){
+                    alert('Você acertou!!');
+                    resposta = true;
+                    break;
+                }
+            }
+            if(!resposta){
+                alert('Você errou!!')
+            }
+
+            input.value = '';
+            input.focus();
+        }
+        var button = document.querySelector('button');
+        button.onclick = verificar
+       
+        
+    </script>
+</body>
+</html>

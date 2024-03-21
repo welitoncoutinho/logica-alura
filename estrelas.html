@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo das estrelas</title>
+</head>
+<body>
+    <script>
+        function pulaLinha(){
+            document.write('<br>');
+            document.write('<br>');
+        }
+
+        function mostra(frase){
+            document.write(frase);
+            pulaLinha();
+        }
+        var colunas = 2
+        var estrelas = colunas + 1
+        for(var i = 1; i <= colunas; i = i++){
+            for(var c = 1; c <= estrelas; c++){
+                document.write('*')
+            }
+            pulaLinha()
+        }
+    </script>
+</body>
+</html>
