@@ -12,32 +12,43 @@
 
 
         var input = document.querySelector('input');
-        input.focus()
+        input.focus();
         var numerosPensados = []
         
         function sorteiaNumeros(n){
-            var numerosAleatorios = []
-            var numeroAleatorio = 0
+            var numerosAleatorios = [];
+            var numeroAleatorio = 0;
             var c = 0;
-            while(c <= n){
+            while(c < n){
+                var achou = false
                 numeroAleatorio = Math.round(Math.random()*10);
-                if(numeroAleatorio !== numerosAleatorios[c]){
-                    numerosAleatorios.push(numeroAleatorio)
+                for(var i = 0; i < numerosAleatorios.length; i++){
+                    if(numerosAleatorios[i] == numeroAleatorio){
+                        achou = true
+                        break
+                    }
                 }
+                if(achou == false){
+                    numerosAleatorios.push(numeroAleatorio)
+                    c++
+                }
+                
             }
             
+            return numerosAleatorios;
         }
 
         var numerosPensados = sorteiaNumeros(5);
 
+        console.log(numerosPensados);
         function verificar(){
+            var resposta = false
             for(var i = 0; i < numerosPensados.length; i++){
                 if(numerosPensados[i] == input.value){
-                    alert('Você acetou!!');
-                }else{
-                    alert('Você errou!!');
+                    resposta = true
                 }
             }
+            resposta?alert('Você acertou!!'):alert('Você errou!!');
             input.value = '';
             input.focus();
         }
